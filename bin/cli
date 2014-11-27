@@ -1,0 +1,25 @@
+#!/usr/bin/env coffee
+
+# *Modules*
+commander = require 'commander'
+
+
+# *Setup*
+commander
+.version('0.0.1')
+.option('-i, --integer <n>', 'An integer argument', parseInt)
+.option('-p, --peppers', 'Add peppers')
+.option('-P, --pineapple', 'Add pineapple')
+.option('-b, --bbq', 'Add bbq sauce')
+.option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
+.parse(process.argv)
+
+# Show help option if no parameter was input
+if process.argv[2] is undefined
+  commander.help();
+else
+  # console.log(' int: %j', commander.integer)
+  main = require '../lib/main'
+  main()
+
+
